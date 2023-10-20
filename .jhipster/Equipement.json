@@ -1,0 +1,52 @@
+{
+  "applications": "*",
+  "changelogDate": "20210929124220",
+  "dbhIdName": "EquipementID",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "equipement",
+  "fields": [
+    {
+      "fieldName": "modelName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modelNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "instruction",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "verified",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Equipement",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "report",
+      "otherEntityRelationshipName": "equipement",
+      "relationshipName": "report",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "media",
+      "otherEntityRelationshipName": "equipement",
+      "relationshipName": "media",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "park",
+      "otherEntityRelationshipName": "equipement",
+      "relationshipName": "park",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

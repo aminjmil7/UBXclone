@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="events">
+      <h2 data-cy="eventsDetailsHeading"><span>Events</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ events.id }}</span>
+        </dd>
+        <dt><span>Event Name</span></dt>
+        <dd>
+          <span>{{ events.eventName }}</span>
+        </dd>
+        <dt><span>Event Date</span></dt>
+        <dd>
+          <span>{{ events.eventDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>User Id</span></dt>
+        <dd>
+          <span>{{ events.user_id }}</span>
+        </dd>
+        <dt><span>Park</span></dt>
+        <dd>
+          <div *ngIf="events.park">
+            <a [routerLink]="['/park', events.park.id, 'view']">{{ events.park.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Equipement</span></dt>
+        <dd>
+          <div *ngIf="events.equipement">
+            <a [routerLink]="['/equipement', events.equipement.id, 'view']">{{ events.equipement.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/events', events.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

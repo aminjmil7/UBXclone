@@ -1,0 +1,46 @@
+{
+  "applications": "*",
+  "changelogDate": "20220202202022",
+  "dbhIdName": "RatingID",
+  "dto": "mapstruct",
+  "entityTableName": "rating",
+  "fields": [
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ratingNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "dbhColumnName": "ratingDate",
+      "fieldName": "ratingDate",
+      "fieldType": "Instant"
+    },
+    {
+      "dbhColumnName": "user_id",
+      "fieldName": "user_id",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Rating",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "park",
+      "otherEntityRelationshipName": "rating",
+      "relationshipName": "park",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "equipement",
+      "otherEntityRelationshipName": "rating",
+      "relationshipName": "equipement",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

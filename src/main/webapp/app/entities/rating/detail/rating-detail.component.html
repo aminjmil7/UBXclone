@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="rating">
+      <h2 data-cy="ratingDetailsHeading"><span>Rating</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ rating.id }}</span>
+        </dd>
+        <dt><span>Comment</span></dt>
+        <dd>
+          <span>{{ rating.comment }}</span>
+        </dd>
+        <dt><span>Rating Number</span></dt>
+        <dd>
+          <span>{{ rating.ratingNumber }}</span>
+        </dd>
+        <dt><span>Rating Date</span></dt>
+        <dd>
+          <span>{{ rating.ratingDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>User Id</span></dt>
+        <dd>
+          <span>{{ rating.user_id }}</span>
+        </dd>
+        <dt><span>Park</span></dt>
+        <dd>
+          <div *ngIf="rating.park">
+            <a [routerLink]="['/park', rating.park.id, 'view']">{{ rating.park.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Equipement</span></dt>
+        <dd>
+          <div *ngIf="rating.equipement">
+            <a [routerLink]="['/equipement', rating.equipement.id, 'view']">{{ rating.equipement.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/rating', rating.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

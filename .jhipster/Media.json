@@ -1,0 +1,51 @@
+{
+  "applications": "*",
+  "changelogDate": "20210929124222",
+  "dbhIdName": "MediaID",
+  "dto": "mapstruct",
+  "entityTableName": "media",
+  "fields": [
+    {
+      "fieldName": "fileName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "filePath",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fileType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "authType",
+      "fieldType": "AuthType",
+      "fieldValues": "LEARN,TECHFILE"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Media",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "park",
+      "otherEntityRelationshipName": "media",
+      "relationshipName": "park",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "equipement",
+      "otherEntityRelationshipName": "media",
+      "relationshipName": "equipement",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "report",
+      "otherEntityRelationshipName": "media",
+      "relationshipName": "report",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

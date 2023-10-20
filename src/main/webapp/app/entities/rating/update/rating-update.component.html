@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-rating-heading" data-cy="RatingCreateUpdateHeading">Create or edit a Rating</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_comment">Comment</label>
+          <input type="text" class="form-control" name="comment" id="field_comment" data-cy="comment" formControlName="comment" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_ratingNumber">Rating Number</label>
+          <input
+            type="number"
+            class="form-control"
+            name="ratingNumber"
+            id="field_ratingNumber"
+            data-cy="ratingNumber"
+            formControlName="ratingNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_ratingDate">Rating Date</label>
+          <div class="d-flex">
+            <input
+              id="field_ratingDate"
+              data-cy="ratingDate"
+              type="datetime-local"
+              class="form-control"
+              name="ratingDate"
+              formControlName="ratingDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_user_id">User Id</label>
+          <input type="number" class="form-control" name="user_id" id="field_user_id" data-cy="user_id" formControlName="user_id" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_park">Park</label>
+          <select class="form-control" id="field_park" data-cy="park" name="park" formControlName="park" [compareWith]="comparePark">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="parkOption" *ngFor="let parkOption of parksSharedCollection">{{ parkOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_equipement">Equipement</label>
+          <select
+            class="form-control"
+            id="field_equipement"
+            data-cy="equipement"
+            name="equipement"
+            formControlName="equipement"
+            [compareWith]="compareEquipement"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="equipementOption" *ngFor="let equipementOption of equipementsSharedCollection">
+              {{ equipementOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

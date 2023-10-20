@@ -1,0 +1,95 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-media-heading" data-cy="MediaCreateUpdateHeading">Create or edit a Media</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_fileName">File Name</label>
+          <input type="text" class="form-control" name="fileName" id="field_fileName" data-cy="fileName" formControlName="fileName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_filePath">File Path</label>
+          <input type="text" class="form-control" name="filePath" id="field_filePath" data-cy="filePath" formControlName="filePath" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_fileType">File Type</label>
+          <input type="text" class="form-control" name="fileType" id="field_fileType" data-cy="fileType" formControlName="fileType" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_authType">Auth Type</label>
+          <select class="form-control" name="authType" formControlName="authType" id="field_authType" data-cy="authType">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let authType of authTypeValues" [value]="authType">authType</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_park">Park</label>
+          <select class="form-control" id="field_park" data-cy="park" name="park" formControlName="park" [compareWith]="comparePark">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="parkOption" *ngFor="let parkOption of parksSharedCollection">{{ parkOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_equipement">Equipement</label>
+          <select
+            class="form-control"
+            id="field_equipement"
+            data-cy="equipement"
+            name="equipement"
+            formControlName="equipement"
+            [compareWith]="compareEquipement"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="equipementOption" *ngFor="let equipementOption of equipementsSharedCollection">
+              {{ equipementOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_report">Report</label>
+          <select
+            class="form-control"
+            id="field_report"
+            data-cy="report"
+            name="report"
+            formControlName="report"
+            [compareWith]="compareReport"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="reportOption" *ngFor="let reportOption of reportsSharedCollection">{{ reportOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

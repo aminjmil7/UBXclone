@@ -1,0 +1,45 @@
+{
+  "applications": "*",
+  "changelogDate": "20211212124220",
+  "dbhIdName": "EventID",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "Events",
+  "fields": [
+    {
+      "dbhColumnName": "eventName",
+      "fieldName": "eventName",
+      "fieldType": "String"
+    },
+    {
+      "dbhColumnName": "eventDate",
+      "fieldName": "eventDate",
+      "fieldType": "Instant"
+    },
+    {
+      "dbhColumnName": "user_id",
+      "fieldName": "user_id",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Events",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "park",
+      "otherEntityRelationshipName": "events",
+      "relationshipName": "park",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "equipement",
+      "otherEntityRelationshipName": "events",
+      "relationshipName": "equipement",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

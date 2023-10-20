@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="equipement">
+      <h2 data-cy="equipementDetailsHeading"><span>Equipement</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ equipement.id }}</span>
+        </dd>
+        <dt><span>Model Name</span></dt>
+        <dd>
+          <span>{{ equipement.modelName }}</span>
+        </dd>
+        <dt><span>Model Number</span></dt>
+        <dd>
+          <span>{{ equipement.modelNumber }}</span>
+        </dd>
+        <dt><span>Instruction</span></dt>
+        <dd>
+          <span>{{ equipement.instruction }}</span>
+        </dd>
+        <dt><span>Verified</span></dt>
+        <dd>
+          <span>{{ equipement.verified }}</span>
+        </dd>
+        <dt><span>Park</span></dt>
+        <dd>
+          <div *ngIf="equipement.park">
+            <a [routerLink]="['/park', equipement.park.id, 'view']">{{ equipement.park.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/equipement', equipement.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
